@@ -14,8 +14,8 @@ class Routes
             echo "Hello World!";
         });
 
+        $router->add('GET', '/user', [UserController::class, 'index']);
         $router->add('GET', '/user/{id}', [UserController::class, 'show']);
-        $router->add('POST', '/user', [UserController::class, 'store']);
 
         $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 
