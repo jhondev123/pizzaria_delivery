@@ -1,0 +1,23 @@
+{
+    "name": "jhonattan/pizzaria_delivery",
+    "autoload": {
+        "psr-4": {
+            "Jhonattan\\PizzariaDelivery\\": "src/",
+            "Jhonattan\\PizzariaDelivery\\Tests\\": "tests/",
+            "Jhonattan\\PizzariaDelivery\\Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jhondev123",
+            "email": "jhonattan.curtarelli@outlook.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^11.4"
+    },
+    "require": {
+        "doctrine/orm": "^3.3",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
