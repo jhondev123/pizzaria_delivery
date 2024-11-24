@@ -1,6 +1,6 @@
 <?php
 
-namespace Jhonattan\PizzariaDelivery\Core;
+namespace Jhonattan\PizzariaDelivery\Core\Http;
 
 class Request
 {

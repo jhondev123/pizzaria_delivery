@@ -2,6 +2,9 @@
 
 namespace Jhonattan\PizzariaDelivery\Core;
 
+use Jhonattan\PizzariaDelivery\Core\Http\Request;
+use Jhonattan\PizzariaDelivery\Core\Http\ResponseManager;
+
 class Router
 {
     private array $routes = [];
@@ -28,12 +31,14 @@ class Router
 
                     if (is_callable($handler)) {
                         // Passa o Request como primeiro argumento
-                        call_user_func($handler, $request, ...array_values($params));
+                        $res = call_user_func($handler, $request, ...array_values($params));
+                        ResponseManager::response($res);
                     } elseif (is_array($handler)) {
                         [$controller, $method] = $handler;
                         if (class_exists($controller) && method_exists($controller, $method)) {
                             // Passa o Request como primeiro argumento
-                            (new $controller())->$method($request, ...array_values($params));
+                            $res = (new $controller())->$method($request, ...array_values($params));
+                            ResponseManager::response($res);
                         } else {
                             http_response_code(500);
                             echo "Erro: Controlador ou método não encontrado.";

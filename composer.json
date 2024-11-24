@@ -22,6 +22,7 @@
         "doctrine/dbal": "^4.2",
         "symfony/cache": "^7.1",
         "doctrine/migrations": "^3.8",
-        "monolog/monolog": "^3.8"
+        "monolog/monolog": "^3.8",
+        "nyholm/psr7": "^1.8"
     }
 }

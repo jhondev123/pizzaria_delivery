@@ -3,8 +3,9 @@
 namespace Jhonattan\PizzariaDelivery\Core\Routes;
 
 use Jhonattan\PizzariaDelivery\App\Http\Controllers\UserController;
-use Jhonattan\PizzariaDelivery\Core\Request;
+use Jhonattan\PizzariaDelivery\Core\Http\Request;
 use Jhonattan\PizzariaDelivery\Core\Router;
+
 class Routes
 {
     public static function init()

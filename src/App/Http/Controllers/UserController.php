@@ -1,10 +1,13 @@
 <?php
 
 namespace Jhonattan\PizzariaDelivery\App\Http\Controllers;
+
 use Doctrine\ORM\Exception\ORMException;
 use Jhonattan\PizzariaDelivery\Core\EntityManager;
-use Jhonattan\PizzariaDelivery\Core\Request;
+use Jhonattan\PizzariaDelivery\Core\Http\Request;
 use Jhonattan\PizzariaDelivery\Domain\Entities\User;
+use Jhonattan\PizzariaDelivery\Core\Http\ResponseFactory;
+use Nyholm\Psr7\Response;
 
 class UserController extends Controller
 {
@@ -14,11 +17,13 @@ class UserController extends Controller
         parent::__construct();
         $this->em = EntityManager::getEntityManager();
     }
-    public function index()
+
+
+    public function index(Request $request): Response
     {
         $users = $this->em->getRepository(User::class)->findAll();
-        var_dump($users);
-        echo "index";
+        return ResponseFactory::response(200, [], $users);
+
     }
     public function show(Request $request, $id)
     {
@@ -29,9 +34,10 @@ class UserController extends Controller
     /**
      * @throws ORMException
      */
-    public function store(Request $request)
+    public function store(Request $request):Response
     {
         try {
+
             $user = new User();
             $user->name = "Jhonattan";
 
@@ -39,24 +45,19 @@ class UserController extends Controller
 
             $this->em->flush();
 
-            return [
-                'success' => true,
-                'message' => 'Usuário criado com sucesso',
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name
-                ]
-            ];
+            return ResponseFactory::response(201, [],
+                ['success' => true, 'message' => 'Usuário criado com sucesso']
+            );
 
         } catch (\Exception $e) {
             // Log do erro
             error_log($e->getMessage());
 
             // Retorna mensagem de erro
-            return [
-                'success' => false,
-                'message' => 'Erro ao criar usuário: ' . $e->getMessage()
-            ];
+
+            return ResponseFactory::response(400, [],
+                ['success' => true, 'message' => 'Erro ao criar usuário']
+            );
         }
 
     }
