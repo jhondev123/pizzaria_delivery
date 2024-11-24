@@ -6,11 +6,12 @@ use Jhonattan\PizzariaDelivery\Core\EntityManager;
 use Jhonattan\PizzariaDelivery\Core\Request;
 use Jhonattan\PizzariaDelivery\Domain\Entities\User;
 
-class UserController
+class UserController extends Controller
 {
     private $em;
     public function __construct()
     {
+        parent::__construct();
         $this->em = EntityManager::getEntityManager();
     }
     public function index()
@@ -21,7 +22,8 @@ class UserController
     }
     public function show(Request $request, $id)
     {
-
+        self::$logger->info('Show user with id: ' . $id);
+        echo "show";
     }
 
     /**
