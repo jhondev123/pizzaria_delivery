@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241121235606 extends AbstractMigration
+final class Version20241124142842 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -19,17 +19,17 @@ final class Version20241121235606 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $schema->createTable('users', function ($table) {
-            $table->addColumn('id', 'integer', ['autoincrement' => true]);
-            $table->addColumn('name', 'string', ['length' => 255]);
-            $table->setPrimaryKey(['id']);
-        });
+
+        $schema->createTable('users');
+        $table = $schema->getTable('users');
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->addColumn('name', 'string');
+        $table->setPrimaryKey(['id']);
 
     }
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-
+        $schema->dropTable('users');
     }
 }

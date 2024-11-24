@@ -10,7 +10,7 @@ class User
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
-    public string $id;
+    public int $id;
 
     #[ORM\Column(type: 'string')]
     public string $name;
