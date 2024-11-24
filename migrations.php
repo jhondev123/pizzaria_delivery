@@ -10,7 +10,7 @@ return [
     ],
 
     'migrations_paths' => [
-        'Jhonattan\PizzariaDelivery\Infra\Persistence\Migrations' => __DIR__ . '/migrations',
+        'Jhonattan\PizzariaDelivery\Infra\Persistence\Migrations' => __DIR__ . '/src/Infra/Persistence/Migrations',
     ],
 
     'all_or_nothing' => true,

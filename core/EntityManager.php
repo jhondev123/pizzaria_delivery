@@ -28,6 +28,5 @@ class EntityManager
     {
         $config = self::config();
         return new EntityManagerOrm(self::connection($config), $config);
-
     }
 }
