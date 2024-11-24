@@ -2,6 +2,7 @@
 
 namespace Jhonattan\PizzariaDelivery\App\Http\Controllers;
 use Jhonattan\PizzariaDelivery\Core\EntityManager;
+use Jhonattan\PizzariaDelivery\Core\Request;
 
 class UserController
 {
@@ -11,8 +12,13 @@ class UserController
 
         echo "index";
     }
-    public function show($id)
+    public function show(Request $request, $id)
     {
         echo "show: $id";
+    }
+    public function store(Request $request)
+    {
+        var_dump($request);
+        echo "store";
     }
 }

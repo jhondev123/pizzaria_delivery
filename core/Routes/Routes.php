@@ -3,6 +3,7 @@
 namespace Jhonattan\PizzariaDelivery\Core\Routes;
 
 use Jhonattan\PizzariaDelivery\App\Http\Controllers\UserController;
+use Jhonattan\PizzariaDelivery\Core\Request;
 use Jhonattan\PizzariaDelivery\Core\Router;
 class Routes
 {
@@ -14,10 +15,12 @@ class Routes
             echo "Hello World!";
         });
 
-        $router->add('GET', '/user', [UserController::class, 'index']);
-        $router->add('GET', '/user/{id}', [UserController::class, 'show']);
+        $router->add('GET', '/users', [UserController::class, 'index']);
+        $router->add('GET', '/users/{id}', [UserController::class, 'show']);
+        $router->add('POST', '/users', [UserController::class, 'store']);
+        $request = new Request();
 
-        $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+        $router->dispatch($request);
 
     }
 
